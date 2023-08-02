@@ -11,7 +11,7 @@
 seq.pyの  
 if \__name__ == "\__main__": より前の行は無視してください。  
 
-seq = SEQ(total_row_num=3, pulse_height=10, cycletime=5)  
+seq = SEQ(total_row_num=3, cycletime=5)  
 ここでは、何種類のパルスを使用するのか、パルスの高さ、サイクルタイムを設定します。  
 ターゲット1+ターゲット2+酸素であれば、total_row_numは3となります。  
 
