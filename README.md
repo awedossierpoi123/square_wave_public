@@ -8,8 +8,8 @@
 5. コマンドプロンプトに "python seq.py"と入力することで、パターンを出力することができます。 "python seq.py" would output pattern.
 
 ## 使用方法
-seq.pyの
-if __name__ == "__main__": より前の行は無視してください。  
+seq.pyの  
+if \__name__ == "\__main__": より前の行は無視してください。  
 
 seq = SEQ(total_row_num=3, pulse_height=10, cycletime=5)  
 ここでは、何種類のパルスを使用するのか、パルスの高さ、サイクルタイムを設定します。  
