@@ -12,7 +12,7 @@ seq.pyの
 if \__name__ == "\__main__": より前の行は無視してください。  
 
 seq = SEQ(total_row_num=3, cycletime=5)  
-ここでは、何種類のパルスを使用するのか、パルスの高さ、サイクルタイムを設定します。  
+ここでは、何種類のパルスを使用するのか、サイクルタイムを設定します。  
 ターゲット1+ターゲット2+酸素であれば、total_row_numは3となります。  
 
 seq.draw_freq_pulse(start=0.8, end=1.8, freq=10, row_num=2, name="metal 1")  
