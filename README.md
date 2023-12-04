@@ -18,5 +18,6 @@
 ## seq_precise.pyについて About seq_precise.py
 
 seq_precise.pyはシーケンスの詳細構造を出力するpyファイルです。
-https://doi.org/10.1063/5.0065975に記載されているようなシーケンスを出力可能です。
+https://doi.org/10.1063/5.0065975 に記載されているようなシーケンスを出力可能です。
+
 seq_precise.py can output sequence data as well, but its output would be similar to https://doi.org/10.1063/5.0065975.
