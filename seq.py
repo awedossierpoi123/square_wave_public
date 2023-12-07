@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.patches as patches
 # CLASS
 
-font_size = 15
+font_size = 13
 
 class SEQ:
 
