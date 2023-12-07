@@ -1,35 +1,23 @@
 # square_wave_public
+1. Pythonをダウンロードしてください。Install Python from here: https://www.python.org/downloads/windows/
+2. Python.exeをパスを環境変数に設定してください。Make sure to add python.exe to PATH.
+3. レポジトリ全体をCode->Download ZIPとクリックしダウンロードしてください。Download all files in this repository by clicking on Code->Download ZIP.
+4. ダウンロードしたZIPフォルダを展開してください。Unzip the zip folder you downloaded.
+5. 展開後のフォルダのディレクトリ上でコマンドプロンプトを起動してください。Open command prompt. Make sure the current path is under the directory of folder which was unzipped.
+6. python seq.pyと入力すると、シーケンスが出力されます。Input python seq.py on command prompt. Sequence file would be exported to the current directory.
 
-## 初期設定
-1. まず、Pythonをダウンロードしてください。 First, download Python from here: <https://www.python.org/downloads/windows/>
-2. ダウンロードしたインストーラーの命令に沿って設定を進めますが、__"ADD Python x.x to PATH"の所は絶対チェックするようにしてください。__ Start the installer that you have downloaded, but make sure to click on a box that says "ADD Python x.x to PATH".
-3. 終了したら、コマンドプロンプトを開始してください。 Click on command prompt.
-4. コマンドプロンプトに "pip3 install matplotlib" と入力してライブラリをダウンロードしてください。 Enter "pip3 install matplotlib" on command prompt.
-5. seq.pyが配置されているディレクトリに移動した後、コマンドプロンプトに "python seq.py"と入力することで、設定したパターンを出力することができます。  After moving to the directory where seq.py is located, entering "python seq.py" on cmd would output the desired pattern.
+## seq.pyの使用方法
 
-## 使用方法
-seq.pyの  
-if \__name__ == "\__main__": より前の行は無視してください。  
+1. seq = SEQ(total_row_num, pulse_height, cycletime)でシーケンスの初期化を行います。total_row_numは何種類のパルスを使用するか指定します。cycletimeは1周期の時間です。
+2. seq.draw_freq_pulse(start, end, freq, row_num, name)で高周波パルスを出力します。startは開始時間、endは終了時間、row_numはパルスを出力する位置、nameは名前です。freqは周波数をkHzで指定しますが、縦線の間隔を変えるのに使用してもOKです。
+3. seq.draw_pulse()で通常のパルスを出力します。
+4. seq.draw_arrow()で矢印を出力します。
+5. seq.draw_gapline(x)で間隔を出力します。
+6. seq.finalize(filename)でシーケンスの決定とGUIかつファイル出力を行います。filenameでファイル名を設定します。
 
-seq = SEQ(total_row_num=3, cycletime=5)  
-ここでは、何種類のパルスを使用するのか、サイクルタイムを設定します。  
-ターゲット1+ターゲット2+酸素であれば、total_row_numは3となります。  
+## seq_precise.pyについて About seq_precise.py
 
-seq.draw_freq_pulse(start=0.8, end=1.8, freq=10, row_num=2, name="metal 1")  
-ここでは、周波数を表現したパルスを設定します。  
-startはパルス開始sec, endは終了sec, freqは周波数(kHz), row_numは何行目にパルスを置くかです。  
-row_numを0に設定した場合、y軸に対して一番下に置かれます。row_numはtotal_row_num-1を最大値にとるようにしてください。  
+seq_precise.pyはシーケンスの詳細構造を出力するpyファイルです。
+https://doi.org/10.1063/5.0065975 に記載されているようなシーケンスを出力可能です。
 
-seq.draw_pulse(start=4.3, end=5, row_num=0, name="$O_{2}$")  
-ここでは、通常のパルスを設定します。  
-
-seq.draw_arrow(start=0, end=0.8, row_num=2)  
-<->矢印を設定します。start秒からend秒までが長さとなります。  
-row_numは何行目に矢印を置くか設定できます。  
-
-seq.draw_gapline(0.8)  
-点線を引きます。0.8秒目にy軸に対して平行な線を引きます。  
-
-seq.finalize("pattern1.pdf")  
-最後に、ファイル出力とGUI出力を行います。  
-上の例だとpattern1.pdfにファイル出力されます。  
+seq_precise.py can output sequence data as well, but its output would be similar to https://doi.org/10.1063/5.0065975.
