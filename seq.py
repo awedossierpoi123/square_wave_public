@@ -3,23 +3,25 @@ import numpy as np
 import matplotlib.patches as patches
 # CLASS
 
-font_size = 13
+font_size = 15
 
 class SEQ:
 
-    def __init__(self, total_row_num, cycletime):
+    def __init__(self, total_row_num, pulse_height, cycletime):
         plt.rcParams.update({'mathtext.default': 'regular', 'font.size' : font_size})
         self.fig = plt.figure()
         self.ax = self.fig.add_subplot(111)
 
         self.total_row_num = total_row_num
-        self.pulse_height = 10
+        self.pulse_height = pulse_height
         self.cycletime = cycletime
         self.offset = 5
         self.ax.set_xlim(xmin=0, xmax=self.cycletime)
         self.ax.set_ylim(ymin=0, ymax=self.offset+2 *
                          self.total_row_num*self.pulse_height)
-        self.ax.set_xlabel("seconds [sec]")
+        self.ax.set_xlabel("time [sec]", fontdict={'size':font_size})
+        self.ax.tick_params(axis="x", labelsize=font_size)
+        self.ax.tick_params(axis="y", labelsize=font_size)
         self.ax.set_yticks([])
 
     def draw_arrow(self, start, end, row_num):
@@ -87,13 +89,15 @@ class SEQ:
         # plt.plot(baseline_x, baseline_y)
 
     def finalize(self, filename):
+        plt.tight_layout()
         plt.savefig(filename)
         plt.show()
 
 
 if __name__ == "__main__":
 
-    seq = SEQ(total_row_num=3, cycletime=5)
+    
+    seq = SEQ(total_row_num=3, pulse_height=10, cycletime=5)
     seq.draw_freq_pulse(start=0.8, end=1.8, freq=10, row_num=2, name="Hf")
     seq.draw_pulse(start=1.8, end=2.5, row_num=0, name="$O_{2}$")
     seq.draw_freq_pulse(start=3.3, end=4.3, freq=10, row_num=1, name="Zr")
@@ -105,8 +109,8 @@ if __name__ == "__main__":
     seq.draw_gapline(3.3)
     seq.finalize("pattern1.pdf")
 
-    """
-    seq = SEQ(total_row_num=3, cycletime=10.4)
+    
+    seq = SEQ(total_row_num=3, pulse_height=10, cycletime=10.4)
     seq.draw_freq_pulse(start=2.5, end=3, freq=10, row_num=2, name="Hf")
     seq.draw_freq_pulse(start=6.2, end=9.7, freq=10, row_num=1, name="Zr")
     seq.draw_pulse(start=3, end=3.7, row_num=0, name="$O_{2}$")
@@ -119,10 +123,10 @@ if __name__ == "__main__":
     seq.trigger(x=1, name="350 V->490 V")
     seq.trigger(x=3.5, name="490 V->350 V")
     seq.finalize("pattern2.pdf")
-    """
+    
 
     """
-    seq = SEQ(total_row_num=3, cycletime=5.4)
+    seq = SEQ(total_row_num=3, pulse_height=10, cycletime=5.4)
     seq.draw_freq_pulse(start=1, end=2, freq=10, row_num=2, name="Hf")
     seq.draw_freq_pulse(start=3.7, end=4.7, freq=10, row_num=1, name="Zr")
     seq.draw_pulse(start=2, end=2.7, row_num=0, name="$O_{2}$")
